@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Physicwell Rehab Center | Premium Physiotherapy Services</title>
+<meta name="description" content="Physicwell Rehab Center offers top-notch physiotherapy services including orthopedic, sports injury, neurological, and pediatric physiotherapy."/>
+<meta name="keywords" content="physiotherapy, rehab center, orthopedic, sports injury, neurological, Physicwell"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<style>
+  :root {
+    --teal: #0a5c6b;
+    --teal-dark: #073f4a;
+    --teal-light: #0e7a8e;
+    --teal-pale: #e8f4f6;
+    --teal-mid: #c2dfe4;
+    --gold: #b8894a;
+    --gold-light: #d4a96a;
+    --gold-pale: #faf3e8;
+    --white: #ffffff;
+    --off-white: #f9fbfc;
+    --text-dark: #1a2b30;
+    --text-mid: #3d5560;
+    --text-light: #6b8a94;
+    --border: #d0e6eb;
+    --shadow: rgba(10,92,107,0.12);
+    --radius: 12px;
+    --radius-lg: 20px;
+  }
+  [data-theme="dark"] {
+    --white: #0f1e22;
+    --off-white: #142028;
+    --text-dark: #e8f4f6;
+    --text-mid: #a8cdd4;
+    --text-light: #6b9aa6;
+    --border: #1e3540;
+    --shadow: rgba(0,0,0,0.3);
+    --teal-pale: #0d2d34;
+    --gold-pale: #1a1508;
+    --teal-mid: #1a3d47;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--off-white);
+    color: var(--text-dark);
+    transition: background 0.3s, color 0.3s;
+    overflow-x: hidden;
+  }
+  h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; }
+
+  /* NAVBAR */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  [data-theme="dark"] nav { background: rgba(15,30,34,0.92); }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 70px;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-icon {
+    width: 42px; height: 42px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700;
+    color: white; letter-spacing: -1px;
+  }
+  .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--teal); line-height: 1.1; }
+  .logo-sub { font-size: 0.65rem; color: var(--text-light); font-family: 'Nunito', sans-serif; letter-spacing: 2px; text-transform: uppercase; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--text-mid); font-size: 0.9rem; font-weight: 600;
+    letter-spacing: 0.3px; transition: color 0.2s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -3px; left: 0; right: 0; height: 2px;
+    background: var(--teal); transform: scaleX(0); transition: transform 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-btn {
+    background: var(--teal); color: white; padding: 0.55rem 1.4rem;
+    border-radius: 8px; font-size: 0.88rem; font-weight: 600;
+    border: none; cursor: pointer; transition: all 0.2s; text-decoration: none;
+  }
+  .nav-btn:hover { background: var(--teal-dark); transform: translateY(-1px); }
+  .theme-btn {
+    background: var(--teal-pale); border: 1px solid var(--border); border-radius: 8px;
+    width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 1.1rem; transition: all 0.2s; color: var(--teal);
+  }
+  .theme-btn:hover { background: var(--teal-mid); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { width: 24px; height: 2px; background: var(--text-dark); border-radius: 2px; transition: all 0.3s; }
+
+  /* MOBILE MENU */
+  .mobile-menu {
+    display: none; position: fixed; top: 70px; left: 0; right: 0; bottom: 0;
+    background: var(--white); z-index: 999; padding: 2rem; flex-direction: column; gap: 1.5rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-size: 1.2rem; font-weight: 600; color: var(--text-dark);
+    text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1rem;
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh; padding: 100px 2rem 60px;
+    background: var(--white);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; overflow: hidden; z-index: 0;
+  }
+  .hero-circle {
+    position: absolute; border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal-pale), var(--teal-mid));
+    opacity: 0.5;
+    animation: float 6s ease-in-out infinite;
+  }
+  .hero-circle-1 { width: 600px; height: 600px; right: -150px; top: -100px; }
+  .hero-circle-2 { width: 300px; height: 300px; right: 200px; bottom: 50px; opacity: 0.3; animation-delay: 2s; }
+  .hero-circle-3 { width: 150px; height: 150px; left: 10%; top: 30%; opacity: 0.2; animation-delay: 4s; }
+  @keyframes float { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-20px) rotate(5deg); } }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    position: relative; z-index: 1;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--teal-pale); border: 1px solid var(--teal-mid);
+    color: var(--teal); padding: 6px 16px; border-radius: 100px;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 1.5rem; animation: fadeUp 0.6s ease both;
+  }
+  .hero-badge::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--teal); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.5); } }
+  h1.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; font-weight: 700;
+    color: var(--text-dark); margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease 0.1s both;
+  }
+  h1.hero-title em { font-style: italic; color: var(--teal); }
+  .hero-sub {
+    font-size: 1.05rem; line-height: 1.8; color: var(--text-mid);
+    margin-bottom: 2.5rem; font-weight: 400;
+    animation: fadeUp 0.6s ease 0.2s both;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.6s ease 0.3s both; }
+  .btn-primary {
+    background: var(--teal); color: white; padding: 0.85rem 2rem;
+    border-radius: var(--radius); font-size: 0.95rem; font-weight: 700;
+    border: none; cursor: pointer; transition: all 0.25s;
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(10,92,107,0.3);
+  }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(10,92,107,0.4); }
+  .btn-secondary {
+    background: transparent; color: var(--teal); padding: 0.85rem 2rem;
+    border-radius: var(--radius); font-size: 0.95rem; font-weight: 700;
+    border: 2px solid var(--teal); cursor: pointer; transition: all 0.25s;
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+  }
+  .btn-secondary:hover { background: var(--teal); color: white; transform: translateY(-2px); }
+  .hero-stats {
+    display: flex; gap: 2rem; margin-top: 3rem;
+    animation: fadeUp 0.6s ease 0.4s both;
+  }
+  .stat-item { text-align: center; }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 700; color: var(--teal); }
+  .stat-label { font-size: 0.78rem; color: var(--text-light); font-weight: 600; letter-spacing: 0.5px; }
+  .hero-visual {
+    position: relative; animation: fadeUp 0.6s ease 0.2s both;
+  }
+  .hero-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 2rem; position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px var(--shadow);
+  }
+  .hero-card-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem;
+  }
+  .doctor-avatar {
+    width: 56px; height: 56px; border-radius: 50%; overflow: hidden;
+    background: linear-gradient(135deg, var(--teal-pale), var(--teal-mid));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--teal);
+  }
+  .doctor-info h4 { font-size: 1rem; color: var(--text-dark); font-family: 'Nunito', sans-serif; font-weight: 700; }
+  .doctor-info p { font-size: 0.82rem; color: var(--text-light); }
+  .rating { display: flex; gap: 3px; color: #f59e0b; font-size: 1rem; margin-top: 3px; }
+  .services-preview { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .svc-pill {
+    background: var(--teal-pale); border: 1px solid var(--teal-mid);
+    padding: 8px 12px; border-radius: 8px; font-size: 0.78rem;
+    color: var(--teal); font-weight: 600; display: flex; align-items: center; gap: 6px;
+  }
+  .svc-pill::before { content: '✓'; color: var(--gold); }
+  .floating-badge {
+    position: absolute; bottom: -15px; right: -15px;
+    background: var(--gold); color: white; border-radius: 14px;
+    padding: 12px 18px; font-size: 0.8rem; font-weight: 700;
+    box-shadow: 0 8px 25px rgba(184,137,74,0.4);
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* SECTIONS */
+  section { padding: 90px 2rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block; background: var(--teal-pale); color: var(--teal);
+    padding: 5px 16px; border-radius: 100px; font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1rem;
+  }
+  h2.section-title {
+    font-size: clamp(2rem, 4vw, 3rem); color: var(--text-dark);
+    margin-bottom: 1rem; line-height: 1.15;
+  }
+  h2.section-title em { color: var(--teal); font-style: italic; }
+  .section-sub { color: var(--text-mid); font-size: 1rem; line-height: 1.8; max-width: 600px; }
+  .section-header { margin-bottom: 3.5rem; }
+  .section-header.center { text-align: center; }
+  .section-header.center .section-sub { margin: 0 auto; }
+
+  /* ABOUT */
+  #about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .about-visual {
+    position: relative; background: linear-gradient(135deg, var(--teal-pale), var(--teal-mid));
+    border-radius: var(--radius-lg); padding: 3rem; overflow: hidden;
+  }
+  .about-visual::before {
+    content: ''; position: absolute; width: 200px; height: 200px;
+    background: rgba(10,92,107,0.1); border-radius: 50%;
+    top: -50px; right: -50px;
+  }
+  .about-icon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; position: relative; z-index: 1; }
+  .about-icon-card {
+    background: var(--white); border-radius: var(--radius); padding: 1.5rem;
+    text-align: center; box-shadow: 0 4px 20px var(--shadow);
+    transition: transform 0.3s;
+  }
+  .about-icon-card:hover { transform: translateY(-5px); }
+  .about-icon { font-size: 2.2rem; margin-bottom: 0.5rem; }
+  .about-icon-card h4 { font-size: 1.1rem; color: var(--teal); font-weight: 700; }
+  .about-icon-card p { font-size: 0.8rem; color: var(--text-light); margin-top: 4px; }
+  .about-points { display: flex; flex-direction: column; gap: 1rem; margin: 2rem 0; }
+  .about-point {
+    display: flex; align-items: flex-start; gap: 12px; padding: 1rem;
+    background: var(--teal-pale); border-radius: var(--radius); border-left: 3px solid var(--teal);
+  }
+  .point-icon { font-size: 1.3rem; }
+  .point-text h4 { font-size: 0.95rem; font-weight: 700; color: var(--text-dark); font-family: 'Nunito', sans-serif; }
+  .point-text p { font-size: 0.82rem; color: var(--text-mid); margin-top: 2px; }
+
+  /* SERVICES */
+  #services { background: var(--off-white); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+  .service-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 2rem;
+    transition: all 0.3s; cursor: pointer; position: relative; overflow: hidden;
+  }
+  .service-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--teal-light));
+    transform: scaleX(0); transition: transform 0.3s; transform-origin: left;
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px var(--shadow); border-color: var(--teal-mid); }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-icon {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: var(--teal-pale); display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; margin-bottom: 1.2rem; transition: background 0.3s;
+  }
+  .service-card:hover .service-icon { background: var(--teal); }
+  .service-card h3 { font-size: 1.3rem; color: var(--text-dark); margin-bottom: 0.7rem; }
+  .service-card p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 1.2rem; }
+  .learn-more {
+    color: var(--teal); font-size: 0.85rem; font-weight: 700; cursor: pointer;
+    display: flex; align-items: center; gap: 5px; border: none; background: none;
+    transition: gap 0.2s;
+  }
+  .service-card:hover .learn-more { gap: 8px; }
+
+  /* APPOINTMENT */
+  #appointment { background: var(--white); }
+  .appt-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
+  .appt-info { position: sticky; top: 100px; }
+  .appt-features { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .appt-feature {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px; background: var(--teal-pale);
+    border-radius: var(--radius); border: 1px solid var(--teal-mid);
+  }
+  .appt-feature-icon { font-size: 1.3rem; }
+  .appt-feature-text { font-size: 0.88rem; color: var(--text-mid); }
+  .appt-feature-text strong { color: var(--text-dark); display: block; font-size: 0.9rem; }
+  .form-card {
+    background: var(--off-white); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 2.5rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 1.2rem; }
+  .form-group label { font-size: 0.82rem; font-weight: 700; color: var(--text-mid); letter-spacing: 0.5px; }
+  .form-group input, .form-group select, .form-group textarea {
+    padding: 0.75rem 1rem; border: 1.5px solid var(--border);
+    border-radius: var(--radius); background: var(--white); color: var(--text-dark);
+    font-family: 'Nunito', sans-serif; font-size: 0.9rem;
+    transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--teal); box-shadow: 0 0 0 3px rgba(10,92,107,0.1);
+  }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    width: 100%; background: var(--teal); color: white;
+    padding: 1rem; border: none; border-radius: var(--radius);
+    font-size: 1rem; font-weight: 700; cursor: pointer;
+    transition: all 0.25s; font-family: 'Nunito', sans-serif;
+    box-shadow: 0 4px 20px rgba(10,92,107,0.3);
+  }
+  .form-submit:hover { background: var(--teal-dark); transform: translateY(-2px); }
+  .form-success {
+    display: none; text-align: center; padding: 3rem 2rem;
+    background: var(--teal-pale); border-radius: var(--radius);
+    border: 1px solid var(--teal-mid);
+  }
+  .form-success h3 { font-size: 1.8rem; color: var(--teal); margin: 1rem 0 0.5rem; }
+  .form-success p { color: var(--text-mid); }
+
+  /* PAYMENT */
+  #payment { background: var(--off-white); }
+  .payment-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; }
+  .payment-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+  .payment-method {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem; text-align: center;
+    transition: all 0.2s;
+  }
+  .payment-method:hover { border-color: var(--teal); box-shadow: 0 4px 20px var(--shadow); }
+  .payment-method-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+  .payment-method h4 { font-size: 0.9rem; color: var(--text-dark); font-family: 'Nunito', sans-serif; font-weight: 700; }
+  .payment-method p { font-size: 0.78rem; color: var(--text-light); margin-top: 3px; }
+  .pay-btn {
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    color: white; padding: 1rem 2.5rem; border-radius: var(--radius);
+    font-size: 1rem; font-weight: 700; border: none; cursor: pointer;
+    transition: all 0.25s; margin-top: 2rem; display: inline-flex; align-items: center; gap: 8px;
+    box-shadow: 0 8px 25px rgba(10,92,107,0.35);
+  }
+  .pay-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(10,92,107,0.45); }
+  .payment-security { display: flex; align-items: center; gap: 8px; margin-top: 1rem; font-size: 0.8rem; color: var(--text-light); }
+  .payment-visual {
+    background: linear-gradient(135deg, var(--teal-dark), var(--teal));
+    border-radius: var(--radius-lg); padding: 2.5rem; color: white;
+    position: relative; overflow: hidden;
+  }
+  .payment-visual::before {
+    content: ''; position: absolute; width: 300px; height: 300px;
+    border-radius: 50%; background: rgba(255,255,255,0.05);
+    right: -80px; top: -80px;
+  }
+  .payment-visual h3 { font-size: 1.8rem; margin-bottom: 1rem; color: white; }
+  .payment-visual p { font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.7; }
+  .pay-features { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 10px; }
+  .pay-features li { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: rgba(255,255,255,0.9); }
+  .pay-features li::before { content: '✓'; background: rgba(255,255,255,0.2); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; flex-shrink: 0; }
+
+  /* TESTIMONIALS */
+  #testimonials { background: var(--teal-dark); overflow: hidden; }
+  #testimonials .section-tag { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.9); }
+  #testimonials h2.section-title { color: white; }
+  #testimonials .section-sub { color: rgba(255,255,255,0.7); }
+  .testimonials-track { display: flex; gap: 1.5rem; overflow-x: auto; padding-bottom: 1rem; scrollbar-width: none; }
+  .testimonials-track::-webkit-scrollbar { display: none; }
+  .testimonial-card {
+    flex: 0 0 350px; background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-lg);
+    padding: 2rem; backdrop-filter: blur(10px);
+    transition: transform 0.3s;
+  }
+  .testimonial-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.12); }
+  .testimonial-stars { color: #f59e0b; font-size: 1rem; margin-bottom: 1rem; }
+  .testimonial-text { font-size: 0.92rem; line-height: 1.8; color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; font-style: italic; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .author-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1rem; color: white;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .author-info h4 { font-size: 0.95rem; color: white; font-family: 'Nunito', sans-serif; font-weight: 700; }
+  .author-info p { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+  .testimonials-controls { display: flex; gap: 10px; margin-top: 2rem; }
+  .tcontrol {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    color: white; font-size: 1.2rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+  }
+  .tcontrol:hover { background: rgba(255,255,255,0.2); }
+
+  /* FAQ */
+  #faq { background: var(--white); }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .faq-list { display: flex; flex-direction: column; gap: 1rem; }
+  .faq-item {
+    border: 1px solid var(--border); border-radius: var(--radius);
+    overflow: hidden; transition: border-color 0.2s;
+  }
+  .faq-item.open { border-color: var(--teal); }
+  .faq-q {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 1.5rem; cursor: pointer; background: var(--off-white);
+    font-weight: 700; font-size: 0.92rem; color: var(--text-dark);
+    transition: background 0.2s;
+  }
+  .faq-item.open .faq-q { background: var(--teal-pale); color: var(--teal); }
+  .faq-arrow { transition: transform 0.3s; font-size: 1.1rem; color: var(--teal); }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+  .faq-a {
+    max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s;
+    padding: 0 1.5rem; font-size: 0.88rem; color: var(--text-mid); line-height: 1.8;
+    background: var(--white);
+  }
+  .faq-item.open .faq-a { max-height: 200px; padding: 1rem 1.5rem; }
+  .faq-visual {
+    background: linear-gradient(135deg, var(--teal-pale), var(--teal-mid));
+    border-radius: var(--radius-lg); padding: 2.5rem; position: sticky; top: 100px;
+  }
+  .faq-visual h3 { font-size: 1.8rem; color: var(--teal-dark); margin-bottom: 1rem; }
+  .faq-visual p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 1.5rem; }
+  .faq-contact-info { display: flex; flex-direction: column; gap: 10px; }
+  .faq-contact-item { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: var(--text-mid); }
+  .faq-contact-icon { font-size: 1.2rem; }
+
+  /* CONTACT */
+  #contact { background: var(--off-white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; }
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem;
+    display: flex; align-items: flex-start; gap: 14px; transition: all 0.2s;
+  }
+  .contact-card:hover { border-color: var(--teal); box-shadow: 0 4px 20px var(--shadow); }
+  .contact-icon {
+    width: 46px; height: 46px; border-radius: 10px; background: var(--teal-pale);
+    display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;
+  }
+  .contact-details h4 { font-size: 0.9rem; font-weight: 700; color: var(--text-dark); font-family: 'Nunito', sans-serif; margin-bottom: 4px; }
+  .contact-details p, .contact-details a { font-size: 0.85rem; color: var(--text-mid); text-decoration: none; line-height: 1.6; }
+  .contact-details a:hover { color: var(--teal); }
+  .map-container {
+    background: var(--teal-pale); border-radius: var(--radius-lg);
+    height: 250px; display: flex; align-items: center; justify-content: center;
+    font-size: 3rem; margin-top: 1rem; border: 1px solid var(--teal-mid);
+    overflow: hidden; position: relative;
+  }
+  .map-placeholder {
+    position: absolute; inset: 0; background: linear-gradient(135deg, var(--teal-pale), var(--teal-mid));
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 10px; font-size: 0.9rem; color: var(--teal); font-weight: 600;
+  }
+  .map-placeholder span { font-size: 2.5rem; }
+  .contact-form-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 2.5rem;
+  }
+  .contact-form-card h3 { font-size: 1.6rem; color: var(--text-dark); margin-bottom: 1.5rem; }
+
+  /* FOOTER */
+  footer {
+    background: var(--teal-dark); color: rgba(255,255,255,0.8);
+    padding: 4rem 2rem 2rem;
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+  .footer-brand p { font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.6); margin: 1rem 0; }
+  .footer-social { display: flex; gap: 10px; }
+  .social-btn {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem; cursor: pointer; transition: all 0.2s; text-decoration: none; color: white;
+  }
+  .social-btn:hover { background: rgba(255,255,255,0.2); }
+  .footer-col h4 { color: white; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; margin-bottom: 1rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .footer-links a:hover { color: white; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem; display: flex; align-items: center; justify-content: space-between;
+    font-size: 0.82rem; color: rgba(255,255,255,0.4);
+  }
+
+  /* FLOATING ELEMENTS */
+  .whatsapp-btn {
+    position: fixed; bottom: 90px; right: 24px; z-index: 999;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #25D366; display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+    cursor: pointer; transition: all 0.3s; text-decoration: none;
+    animation: bounce 2s infinite;
+  }
+  .whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.6); animation: none; }
+  @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  .scroll-top {
+    position: fixed; bottom: 24px; right: 24px; z-index: 999;
+    width: 46px; height: 46px; border-radius: 50%;
+    background: var(--teal); color: white; border: none;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; cursor: pointer; box-shadow: 0 4px 15px var(--shadow);
+    opacity: 0; transform: translateY(10px); transition: all 0.3s;
+  }
+  .scroll-top.visible { opacity: 1; transform: translateY(0); }
+  .sticky-book {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 998;
+    background: var(--teal-dark); color: white;
+    padding: 10px 2rem; display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+    transform: translateY(100%); transition: transform 0.3s;
+  }
+  .sticky-book.visible { transform: translateY(0); }
+  .sticky-book p { font-size: 0.88rem; color: rgba(255,255,255,0.7); }
+  .sticky-book strong { color: white; }
+  .sticky-book-btn {
+    background: white; color: var(--teal); padding: 0.6rem 1.5rem;
+    border-radius: 8px; font-weight: 700; font-size: 0.9rem;
+    border: none; cursor: pointer; transition: all 0.2s; white-space: nowrap;
+  }
+  .sticky-book-btn:hover { background: var(--gold-pale); }
+
+  /* LOADER */
+  .page-loader {
+    position: fixed; inset: 0; z-index: 9999;
+    background: var(--teal-dark); display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 1rem; transition: opacity 0.5s;
+  }
+  .loader-logo { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: white; font-weight: 700; letter-spacing: 2px; }
+  .loader-bar { width: 200px; height: 3px; background: rgba(255,255,255,0.2); border-radius: 2px; overflow: hidden; }
+  .loader-fill { height: 100%; background: var(--gold); border-radius: 2px; animation: load 1.5s ease forwards; }
+  @keyframes load { from { width: 0; } to { width: 100%; } }
+  .page-loader.done { opacity: 0; pointer-events: none; }
+
+  /* REVEAL ANIMATIONS */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-inner, .about-grid, .appt-grid, .payment-grid, .faq-grid, .contact-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-visual { display: none; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links, .nav-btn { display: none; }
+    .hamburger { display: flex; }
+    .form-row { grid-template-columns: 1fr; }
+    .payment-methods { grid-template-columns: 1fr 1fr; }
+    .faq-visual { display: none; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 60px 1.2rem; }
+    .hero-stats { gap: 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .testimonials-track { gap: 1rem; }
+    .testimonial-card { flex: 0 0 280px; }
+    .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE LOADER -->
+<div class="page-loader" id="pageLoader">
+  <div class="loader-logo">Physicwell</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+  <p style="font-size:0.8rem;color:rgba(255,255,255,0.5);letter-spacing:2px;text-transform:uppercase">Rehab Center</p>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="logo">
+      <div class="logo-icon">Pw</div>
+      <div>
+        <div class="logo-text">Physicwell</div>
+        <div class="logo-sub">Rehab Center</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#appointment">Book</a></li>
+      <li><a href="#payment">Payment</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:0.8rem">
+      <button class="theme-btn" id="themeBtn" title="Toggle dark mode">🌙</button>
+      <a href="#appointment" class="nav-btn">Book Appointment</a>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About Us</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#appointment" onclick="closeMobile()">Book Appointment</a>
+  <a href="#payment" onclick="closeMobile()">Pay Online</a>
+  <a href="#testimonials" onclick="closeMobile()">Testimonials</a>
+  <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-circle hero-circle-1"></div>
+    <div class="hero-circle hero-circle-2"></div>
+    <div class="hero-circle hero-circle-3"></div>
+  </div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">🏥 Expert Physiotherapy Care</div>
+      <h1 class="hero-title">Welcome to<br><em>Physicwell</em><br>Rehab Center</h1>
+      <p class="hero-sub">At Physicwell Rehab Center, we are dedicated to providing top-notch physiotherapy services to help you achieve optimal health and wellness. Your recovery journey starts here.</p>
+      <div class="hero-btns">
+        <a href="#appointment" class="btn-primary">📅 Book Appointment</a>
+        <a href="#payment" class="btn-secondary">💳 Pay Online</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Patients Treated</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">7+</div>
+          <div class="stat-label">Specializations</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">98%</div>
+          <div class="stat-label">Success Rate</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-header">
+          <div class="doctor-avatar">Dr</div>
+          <div class="doctor-info">
+            <h4>Expert Physiotherapists</h4>
+            <p>Certified & Experienced Team</p>
+            <div class="rating">★★★★★</div>
+          </div>
+        </div>
+        <p style="font-size:0.82rem;color:var(--text-light);margin-bottom:1.2rem">Our specialized team offers comprehensive rehabilitation across multiple disciplines.</p>
+        <div class="services-preview">
+          <div class="svc-pill">Orthopedic</div>
+          <div class="svc-pill">Sports Injury</div>
+          <div class="svc-pill">Neurological</div>
+          <div class="svc-pill">Pediatric</div>
+          <div class="svc-pill">Geriatric</div>
+          <div class="svc-pill">Post-Surgical</div>
+        </div>
+        <div class="floating-badge">✓ NABH Certified</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-icon-grid">
+          <div class="about-icon-card">
+            <div class="about-icon">🏥</div>
+            <h4>State-of-Art</h4>
+            <p>Modern Equipment</p>
+          </div>
+          <div class="about-icon-card">
+            <div class="about-icon">👨‍⚕️</div>
+            <h4>Expert Team</h4>
+            <p>Certified Therapists</p>
+          </div>
+          <div class="about-icon-card">
+            <div class="about-icon">❤️</div>
+            <h4>Patient First</h4>
+            <p>Personalized Care</p>
+          </div>
+          <div class="about-icon-card">
+            <div class="about-icon">🎯</div>
+            <h4>Goal-Oriented</h4>
+            <p>Targeted Recovery</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="section-header">
+          <span class="section-tag">About Us</span>
+          <h2 class="section-title">Healing with <em>Expertise</em> & Compassion</h2>
+          <p class="section-sub">Physicwell Rehab Center is a premier physiotherapy clinic committed to restoring movement, reducing pain, and improving quality of life for every patient we serve.</p>
+        </div>
+        <div class="about-points">
+          <div class="about-point">
+            <div class="point-icon">🎯</div>
+            <div class="point-text">
+              <h4>Our Mission</h4>
+              <p>To deliver evidence-based physiotherapy care that empowers patients to live pain-free, active lives through personalized treatment plans.</p>
+            </div>
+          </div>
+          <div class="about-point">
+            <div class="point-icon">🔭</div>
+            <div class="point-text">
+              <h4>Our Vision</h4>
+              <p>To be the most trusted rehabilitation center, setting new standards in physiotherapy excellence and patient outcomes.</p>
+            </div>
+          </div>
+          <div class="about-point">
+            <div class="point-icon">🏆</div>
+            <div class="point-text">
+              <h4>Our Experience</h4>
+              <p>With years of combined expertise across specializations, our team has successfully treated 500+ patients achieving remarkable recovery outcomes.</p>
+            </div>
+          </div>
+        </div>
+        <a href="#appointment" class="btn-primary" style="display:inline-flex">Schedule Consultation →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-header center reveal">
+      <span class="section-tag">Our Services</span>
+      <h2 class="section-title">Comprehensive <em>Physiotherapy</em> Services</h2>
+      <p class="section-sub">We offer a full spectrum of specialized physiotherapy treatments tailored to your unique needs and recovery goals.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">🦴</div>
+        <h3>Orthopedic Physiotherapy</h3>
+        <p>Expert treatment for bone, joint, and musculoskeletal conditions including arthritis, fractures, back pain, and joint disorders.</p>
+        <button class="learn-more" onclick="alert('Learn more about Orthopedic Physiotherapy - Contact us for details!')">Learn More →</button>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">⚽</div>
+        <h3>Sports Injury Rehabilitation</h3>
+        <p>Specialized recovery programs for athletes — from sprains and strains to ligament tears and post-sport injuries for fast return to play.</p>
+        <button class="learn-more" onclick="alert('Learn more about Sports Injury Rehab - Contact us for details!')">Learn More →</button>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">🧠</div>
+        <h3>Neurological Physiotherapy</h3>
+        <p>Targeted rehabilitation for stroke, Parkinson's disease, multiple sclerosis, and other neurological conditions to restore function and independence.</p>
+        <button class="learn-more" onclick="alert('Learn more about Neurological Physiotherapy - Contact us for details!')">Learn More →</button>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">👶</div>
+        <h3>Pediatric Physiotherapy</h3>
+        <p>Gentle, play-based therapy for children with developmental delays, cerebral palsy, congenital conditions, and movement disorders.</p>
+        <button class="learn-more" onclick="alert('Learn more about Pediatric Physiotherapy - Contact us for details!')">Learn More →</button>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">👴</div>
+        <h3>Geriatric Physiotherapy</h3>
+        <p>Compassionate care for elderly patients addressing age-related mobility issues, fall prevention, osteoporosis, and improving overall function.</p>
+        <button class="learn-more" onclick="alert('Learn more about Geriatric Physiotherapy - Contact us for details!')">Learn More →</button>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">🔬</div>
+        <h3>Post-Surgical Rehabilitation</h3>
+        <p>Structured recovery programs following surgeries to restore strength, mobility, and function while minimizing scar tissue formation.</p>
+        <button class="learn-more" onclick="alert('Learn more about Post-Surgical Rehab - Contact us for details!')">Learn More →</button>
+      </div>
+      <div class="service-card reveal" style="grid-column: 1 / -1; max-width: 400px; margin: 0 auto;">
+        <div class="service-icon">💊</div>
+        <h3>Chronic Pain Management</h3>
+        <p>Holistic, multi-disciplinary approach to managing chronic pain conditions, improving quality of life through therapy and lifestyle guidance.</p>
+        <button class="learn-more" onclick="alert('Learn more about Chronic Pain Management - Contact us for details!')">Learn More →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT -->
+<section id="appointment">
+  <div class="section-inner">
+    <div class="appt-grid">
+      <div class="appt-info reveal">
+        <span class="section-tag">Book Now</span>
+        <h2 class="section-title">Schedule Your <em>Appointment</em></h2>
+        <p class="section-sub">Book your session online and take the first step towards a pain-free life. We'll confirm your appointment within 24 hours.</p>
+        <div class="appt-features">
+          <div class="appt-feature">
+            <div class="appt-feature-icon">✅</div>
+            <div class="appt-feature-text"><strong>Instant Confirmation</strong>Email & SMS confirmation sent immediately</div>
+          </div>
+          <div class="appt-feature">
+            <div class="appt-feature-icon">🔒</div>
+            <div class="appt-feature-text"><strong>Secure & Private</strong>Your data is 100% confidential and secure</div>
+          </div>
+          <div class="appt-feature">
+            <div class="appt-feature-icon">📱</div>
+            <div class="appt-feature-text"><strong>Easy Rescheduling</strong>Reschedule or cancel anytime with no hassle</div>
+          </div>
+          <div class="appt-feature">
+            <div class="appt-feature-icon">💬</div>
+            <div class="appt-feature-text"><strong>WhatsApp Updates</strong>Get appointment reminders on WhatsApp</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="form-card">
+          <div id="apptForm">
+            <h3 style="font-size:1.6rem;color:var(--text-dark);margin-bottom:1.5rem">Book Your Session</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Patient Name *</label>
+                <input type="text" id="patName" placeholder="Full Name" required/>
+              </div>
+              <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" id="patPhone" placeholder="+91 98765 43210" required/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" id="patEmail" placeholder="your@email.com" required/>
+            </div>
+            <div class="form-group">
+              <label>Select Service *</label>
+              <select id="patService">
+                <option value="">Choose a service...</option>
+                <option>Orthopedic Physiotherapy</option>
+                <option>Sports Injury Rehabilitation</option>
+                <option>Neurological Physiotherapy</option>
+                <option>Pediatric Physiotherapy</option>
+                <option>Geriatric Physiotherapy</option>
+                <option>Post-Surgical Rehabilitation</option>
+                <option>Chronic Pain Management</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Preferred Date *</label>
+                <input type="date" id="patDate"/>
+              </div>
+              <div class="form-group">
+                <label>Preferred Time *</label>
+                <select id="patTime">
+                  <option value="">Select Time</option>
+                  <option>9:00 AM</option><option>10:00 AM</option>
+                  <option>11:00 AM</option><option>12:00 PM</option>
+                  <option>2:00 PM</option><option>3:00 PM</option>
+                  <option>4:00 PM</option><option>5:00 PM</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Additional Notes</label>
+              <textarea id="patNotes" placeholder="Describe your symptoms or concerns..."></textarea>
+            </div>
+            <button class="form-submit" onclick="submitAppt()">📅 Confirm Appointment</button>
+          </div>
+          <div class="form-success" id="apptSuccess">
+            <div style="font-size:4rem">✅</div>
+            <h3>Appointment Booked!</h3>
+            <p>Thank you! We've received your appointment request. You'll receive a confirmation on your email and WhatsApp within 24 hours.</p>
+            <br/>
+            <button onclick="resetForm()" class="btn-primary" style="margin:0 auto;display:inline-flex">Book Another →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT -->
+<section id="payment">
+  <div class="section-inner">
+    <div class="payment-grid">
+      <div class="reveal">
+        <span class="section-tag">Pay Online</span>
+        <h2 class="section-title">Secure <em>Online</em> Payment</h2>
+        <p class="section-sub">Pay conveniently for your sessions online using your preferred payment method. All transactions are 100% secure and encrypted.</p>
+        <div class="payment-methods">
+          <div class="payment-method">
+            <div class="payment-method-icon">💳</div>
+            <h4>Credit/Debit Card</h4>
+            <p>Visa, Mastercard, RuPay</p>
+          </div>
+          <div class="payment-method">
+            <div class="payment-method-icon">🏦</div>
+            <h4>Net Banking</h4>
+            <p>All major banks</p>
+          </div>
+          <div class="payment-method">
+            <div class="payment-method-icon">📱</div>
+            <h4>UPI Payment</h4>
+            <p>GPay, PhonePe, Paytm</p>
+          </div>
+          <div class="payment-method">
+            <div class="payment-method-icon">🏥</div>
+            <h4>Cash / Card</h4>
+            <p>At the Center</p>
+          </div>
+        </div>
+        <button class="pay-btn" onclick="payOnline()">💳 Pay Online Now</button>
+        <div class="payment-security">🔒 256-bit SSL Encrypted · Powered by Razorpay & Stripe</div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="payment-visual">
+          <h3>Why Pay Online?</h3>
+          <p>Skip the queue and secure your spot instantly. Online payments give you a seamless, paperless experience with instant receipts.</p>
+          <ul class="pay-features">
+            <li>Instant digital receipt generation</li>
+            <li>Secure payment history tracking</li>
+            <li>Multiple payment gateway support</li>
+            <li>Insurance claim documentation</li>
+            <li>No extra charges or hidden fees</li>
+            <li>24/7 payment support available</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-tag">Patient Reviews</span>
+      <h2 class="section-title">What Our <em>Patients</em> Say</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.7)">Real stories from real patients who have experienced the Physicwell difference.</p>
+    </div>
+    <div class="testimonials-track" id="testimonialsTrack">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"After my knee surgery, I was worried I'd never play football again. The team at Physicwell designed a perfect recovery plan and I was back on the field in 3 months. Absolutely life-changing!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">RK</div>
+          <div class="author-info"><h4>Rahul Kumar</h4><p>Sports Injury Patient</p></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"I suffered from chronic lower back pain for years. After just 8 sessions here, my pain reduced by 80%. The doctors are knowledgeable, caring, and truly dedicated. Highly recommend!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">PS</div>
+          <div class="author-info"><h4>Priya Sharma</h4><p>Chronic Pain Patient</p></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"My mother had a stroke and her recovery seemed impossible. The neurological physiotherapy program at Physicwell helped her regain 70% of her mobility. We're forever grateful."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">AM</div>
+          <div class="author-info"><h4>Anjali Mishra</h4><p>Family of Stroke Patient</p></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"My 5-year-old has been receiving pediatric physiotherapy here for 6 months. The progress is incredible and the therapists are so patient and gentle with children. Best center in the city!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">VG</div>
+          <div class="author-info"><h4>Vikram Gupta</h4><p>Pediatric Patient's Parent</p></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"As a senior citizen with arthritis and balance problems, I was skeptical. But the geriatric program here genuinely improved my mobility and confidence. I can walk without assistance now!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">ST</div>
+          <div class="author-info"><h4>Sushila Tewari</h4><p>Geriatric Physiotherapy Patient</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonials-controls">
+      <button class="tcontrol" onclick="scrollTestimonials(-1)">←</button>
+      <button class="tcontrol" onclick="scrollTestimonials(1)">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="faq-grid">
+      <div>
+        <div class="section-header reveal">
+          <span class="section-tag">FAQ</span>
+          <h2 class="section-title">Frequently Asked <em>Questions</em></h2>
+        </div>
+        <div class="faq-list reveal">
+          <div class="faq-item open">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              What is physiotherapy? <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">Physiotherapy is a healthcare profession that helps people restore, maintain, and maximize their strength, function, movement, and overall well-being through physical rehabilitation, injury prevention, and health promotion.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              Do I need a doctor's referral? <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">No, you do not necessarily need a referral to see a physiotherapist. You can book an appointment directly with us. However, if you have a specific medical condition, we recommend consulting your doctor first.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              How long does a session last? <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">Initial assessment sessions typically last 45-60 minutes. Follow-up treatment sessions are usually 30-45 minutes. The duration may vary based on your condition and treatment plan.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              How many sessions will I need? <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">The number of sessions varies based on your condition, severity, and individual response to treatment. After the initial assessment, our physiotherapist will provide a personalized treatment plan with an estimated number of sessions.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              What should I wear to my session? <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">Wear comfortable, loose-fitting clothes that allow easy movement. For lower body conditions, shorts are recommended. For upper body, a sleeveless top is helpful. Bring comfortable shoes.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+              Is physiotherapy painful? <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">Physiotherapy should not be overly painful. Some exercises or treatments may cause mild discomfort, which is normal during recovery. Our therapists always work within your comfort level and adjust treatments accordingly.</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="faq-visual">
+          <h3>Still Have Questions?</h3>
+          <p>Our expert team is here to answer any queries you have about physiotherapy treatments, appointment scheduling, or anything else.</p>
+          <div class="faq-contact-info">
+            <div class="faq-contact-item"><span class="faq-contact-icon">📞</span><span>Call us: <strong>+91 98765 43210</strong></span></div>
+            <div class="faq-contact-item"><span class="faq-contact-icon">📧</span><span>Email: <strong>info@physicwellrehabcenter.com</strong></span></div>
+            <div class="faq-contact-item"><span class="faq-contact-icon">💬</span><span>WhatsApp us anytime for quick answers</span></div>
+            <div class="faq-contact-item"><span class="faq-contact-icon">🕐</span><span>Mon–Sat: 9:00 AM – 7:00 PM</span></div>
+          </div>
+          <br/>
+          <a href="#contact" class="btn-primary" style="display:inline-flex;margin-top:0.5rem">Send Us a Message →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header center reveal">
+      <span class="section-tag">Get In Touch</span>
+      <h2 class="section-title">Contact <em>Us</em></h2>
+      <p class="section-sub">Have questions or ready to begin your recovery? Reach out and our team will get back to you promptly.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="contact-card">
+          <div class="contact-icon">📞</div>
+          <div class="contact-details">
+            <h4>Phone Number</h4>
+            <a href="tel:+919876543210">+91 98765 43210</a><br/>
+            <a href="tel:+919876543211">+91 98765 43211</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📧</div>
+          <div class="contact-details">
+            <h4>Email Address</h4>
+            <a href="mailto:info@physicwellrehabcenter.com">info@physicwellrehabcenter.com</a><br/>
+            <a href="mailto:appointments@physicwellrehabcenter.com">appointments@physicwellrehabcenter.com</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📍</div>
+          <div class="contact-details">
+            <h4>Clinic Address</h4>
+            <p>Physicwell Rehab Center<br/>123, Health Colony, Near City Hospital<br/>Your City, State - 000000</p>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">🕐</div>
+          <div class="contact-details">
+            <h4>Working Hours</h4>
+            <p>Monday – Friday: 9:00 AM – 7:00 PM<br/>Saturday: 9:00 AM – 5:00 PM<br/>Sunday: Closed</p>
+          </div>
+        </div>
+        <div class="map-container">
+          <div class="map-placeholder">
+            <span>🗺️</span>
+            <strong>Google Maps</strong>
+            <p style="font-size:0.8rem;color:var(--text-light)">Embed Google Maps iframe here</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="contact-form-card">
+          <h3>Send Us a Message</h3>
+          <div id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Your Name *</label>
+                <input type="text" id="cName" placeholder="Full Name"/>
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" id="cPhone" placeholder="+91 98765 43210"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" id="cEmail" placeholder="your@email.com"/>
+            </div>
+            <div class="form-group">
+              <label>Subject</label>
+              <input type="text" id="cSubject" placeholder="What is this about?"/>
+            </div>
+            <div class="form-group">
+              <label>Your Message *</label>
+              <textarea id="cMessage" rows="5" placeholder="Tell us how we can help you..."></textarea>
+            </div>
+            <button class="form-submit" onclick="submitContact()" style="margin-top:0.5rem">📩 Send Message</button>
+          </div>
+          <div class="form-success" id="contactSuccess">
+            <div style="font-size:4rem">✉️</div>
+            <h3>Message Sent!</h3>
+            <p>Thank you for reaching out! Our team will respond to your message within 24 hours.</p>
+            <br/>
+            <button onclick="resetContact()" class="btn-primary" style="margin:0 auto;display:inline-flex">Send Another →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="text-decoration:none;display:flex;align-items:center;gap:10px;margin-bottom:1rem">
+          <div class="logo-icon">Pw</div>
+          <div>
+            <div class="logo-text" style="color:white">Physicwell</div>
+            <div class="logo-sub">Rehab Center</div>
+          </div>
+        </div>
+        <p>Dedicated to providing top-notch physiotherapy services to help you achieve optimal health and wellness. Your recovery is our mission.</p>
+        <div class="footer-social">
+          <a class="social-btn" href="#" title="Facebook">f</a>
+          <a class="social-btn" href="#" title="Instagram">in</a>
+          <a class="social-btn" href="#" title="Twitter">tw</a>
+          <a class="social-btn" href="#" title="YouTube">yt</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="#services">Orthopedic Therapy</a></li>
+          <li><a href="#services">Sports Injury Rehab</a></li>
+          <li><a href="#services">Neurological Therapy</a></li>
+          <li><a href="#services">Pediatric Therapy</a></li>
+          <li><a href="#services">Geriatric Therapy</a></li>
+          <li><a href="#services">Pain Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#appointment">Book Appointment</a></li>
+          <li><a href="#payment">Pay Online</a></li>
+          <li><a href="#testimonials">Patient Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-links">
+          <li><a href="tel:+919876543210">📞 +91 98765 43210</a></li>
+          <li><a href="mailto:info@physicwellrehabcenter.com">📧 Email Us</a></li>
+          <li><a href="#">📍 View on Maps</a></li>
+          <li><a href="#">🕐 Mon–Sat: 9AM–7PM</a></li>
+          <li><a href="https://www.physicwellrehabcenter.com">🌐 www.physicwellrehabcenter.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Physicwell Rehab Center. All rights reserved.</p>
+      <p>Privacy Policy · Terms of Service · Sitemap</p>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING ELEMENTS -->
+<a href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20book%20an%20appointment%20at%20Physicwell%20Rehab%20Center" class="whatsapp-btn" title="Chat on WhatsApp" target="_blank">💬</a>
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+<div class="sticky-book" id="stickyBook">
+  <p><strong>Ready to start your recovery?</strong> Expert care is just a click away.</p>
+  <button class="sticky-book-btn" onclick="document.getElementById('appointment').scrollIntoView({behavior:'smooth'});document.getElementById('stickyBook').classList.remove('visible')">Book Now</button>
+</div>
+
+<script>
+// LOADER
+window.addEventListener('load',()=>{
+  setTimeout(()=>{ document.getElementById('pageLoader').classList.add('done'); },1500);
+});
+
+// THEME TOGGLE
+const themeBtn = document.getElementById('themeBtn');
+let dark = false;
+themeBtn.onclick = () => {
+  dark = !dark;
+  document.body.setAttribute('data-theme', dark ? 'dark' : '');
+  themeBtn.textContent = dark ? '☀️' : '🌙';
+};
+
+// HAMBURGER
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.onclick = () => mobileMenu.classList.toggle('open');
+function closeMobile() { mobileMenu.classList.remove('open'); }
+
+// SCROLL EFFECTS
+const scrollTop = document.getElementById('scrollTop');
+const stickyBook = document.getElementById('stickyBook');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const s = window.scrollY;
+  scrollTop.classList.toggle('visible', s > 400);
+  stickyBook.classList.toggle('visible', s > 600 && s < document.body.scrollHeight - 1200);
+  lastScroll = s;
+});
+
+// REVEAL ON SCROLL
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+reveals.forEach(r => observer.observe(r));
+
+// FAQ TOGGLE
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ─── LIVE BACKEND URL ─────────────────────────────────────────────
+const API = 'https://physicwell-backend.onrender.com';
+
+// ─── APPOINTMENT FORM (Connected to Backend) ──────────────────────
+async function submitAppt() {
+  const fields = ['patName','patPhone','patEmail','patService','patDate','patTime'];
+  const vals = fields.map(id => document.getElementById(id).value.trim());
+  if (vals.some(v => !v)) { alert('Please fill in all required fields.'); return; }
+
+  const btn = document.querySelector('.form-submit');
+  btn.textContent = 'Booking...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch(`${API}/api/appointments`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        patientName: document.getElementById('patName').value.trim(),
+        phone:       document.getElementById('patPhone').value.trim(),
+        email:       document.getElementById('patEmail').value.trim(),
+        service:     document.getElementById('patService').value.trim(),
+        date:        document.getElementById('patDate').value,
+        time:        document.getElementById('patTime').value,
+        notes:       document.getElementById('patNotes').value.trim()
+      })
+    });
+    const data = await res.json();
+
+    if (data.success) {
+      document.getElementById('apptForm').style.display = 'none';
+      document.getElementById('apptSuccess').style.display = 'block';
+    } else {
+      alert('❌ ' + (data.message || 'Something went wrong. Please try again.'));
+    }
+  } catch (err) {
+    alert('❌ Server se connect nahi ho pa raha. Please try again.');
+  } finally {
+    btn.textContent = '📅 Confirm Appointment';
+    btn.disabled = false;
+  }
+}
+
+function resetForm() {
+  document.getElementById('apptForm').style.display = 'block';
+  document.getElementById('apptSuccess').style.display = 'none';
+  ['patName','patPhone','patEmail','patService','patDate','patTime','patNotes']
+    .forEach(id => document.getElementById(id).value = '');
+}
+
+// ─── CONTACT FORM (Connected to Backend) ─────────────────────────
+async function submitContact() {
+  const name    = document.getElementById('cName').value.trim();
+  const email   = document.getElementById('cEmail').value.trim();
+  const message = document.getElementById('cMessage').value.trim();
+
+  if (!name || !email || !message) { alert('Please fill in all required fields.'); return; }
+
+  const btn = document.querySelector('#contactForm .form-submit');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch(`${API}/api/contact`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name,
+        email,
+        phone:   document.getElementById('cPhone').value.trim(),
+        subject: document.getElementById('cSubject').value.trim(),
+        message
+      })
+    });
+    const data = await res.json();
+
+    if (data.success) {
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('contactSuccess').style.display = 'block';
+    } else {
+      alert('❌ ' + (data.message || 'Something went wrong. Please try again.'));
+    }
+  } catch (err) {
+    alert('❌ Server se connect nahi ho pa raha. Please try again.');
+  } finally {
+    btn.textContent = '📩 Send Message';
+    btn.disabled = false;
+  }
+}
+
+function resetContact() {
+  document.getElementById('contactForm').style.display = 'block';
+  document.getElementById('contactSuccess').style.display = 'none';
+  ['cName','cPhone','cEmail','cSubject','cMessage'].forEach(id => document.getElementById(id).value = '');
+}
+
+// ─── TESTIMONIALS SCROLL ─────────────────────────────────────────
+function scrollTestimonials(dir) {
+  const track = document.getElementById('testimonialsTrack');
+  track.scrollBy({ left: dir * 370, behavior: 'smooth' });
+}
+
+// Load live testimonials from backend
+async function loadTestimonials() {
+  try {
+    const res = await fetch(`${API}/api/testimonials`);
+    const data = await res.json();
+    if (data.success && data.testimonials.length > 0) {
+      const track = document.getElementById('testimonialsTrack');
+      track.innerHTML = data.testimonials.map(t => `
+        <div class="testimonial-card">
+          <div class="testimonial-stars">${'★'.repeat(t.rating)}${'☆'.repeat(5 - t.rating)}</div>
+          <p class="testimonial-text">"${t.review}"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">${t.patientName.slice(0,2).toUpperCase()}</div>
+            <div class="author-info"><h4>${t.patientName}</h4><p>${t.service || 'Patient'}</p></div>
+          </div>
+        </div>
+      `).join('');
+    }
+  } catch (e) { /* Keep default testimonials if API fails */ }
+}
+loadTestimonials();
+
+// ─── RAZORPAY PAYMENT ─────────────────────────────────────────────
+async function payOnline() {
+  const name  = prompt('Aapka naam:');
+  const email = prompt('Aapka email:');
+  const phone = prompt('Aapka phone number:');
+  if (!name || !email) { alert('Name aur email zaroori hai.'); return; }
+
+  try {
+    const res = await fetch(`${API}/api/payments/create-order`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ amount: 500, patientName: name, email, phone, description: 'Physiotherapy Session' })
+    });
+    const data = await res.json();
+
+    if (!data.success) { alert('Payment order create nahi hua. Try again.'); return; }
+
+    const options = {
+      key:      data.keyId,
+      amount:   data.amount,
+      currency: data.currency,
+      name:     'Physicwell Rehab Center',
+      description: 'Physiotherapy Session',
+      order_id: data.orderId,
+      handler: async function(response) {
+        const verifyRes = await fetch(`${API}/api/payments/verify`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            razorpay_order_id:   response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature:  response.razorpay_signature,
+            paymentId:           data.paymentId
+          })
+        });
+        const verifyData = await verifyRes.json();
+        if (verifyData.success) {
+          alert(`✅ Payment Successful!\nReceipt: ${verifyData.receiptNumber}\nEmail pe receipt bhej di gayi hai.`);
+        } else {
+          alert('❌ Payment verification failed. Please contact us.');
+        }
+      },
+      prefill: { name, email, contact: phone },
+      theme: { color: '#0a5c6b' }
+    };
+
+    if (typeof Razorpay === 'undefined') {
+      alert('Razorpay load nahi hua. Please page refresh karein.');
+      return;
+    }
+    const rzp = new Razorpay(options);
+    rzp.open();
+  } catch (err) {
+    alert('Payment mein error aaya. Please try again.');
+  }
+}
+
+// ─── SET MIN DATE ─────────────────────────────────────────────────
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('patDate').min = today;
+</script>
+</body>
+</html>
