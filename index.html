@@ -937,8 +937,29 @@
             <p>At the Center</p>
           </div>
         </div>
-        <button class="pay-btn" onclick="payOnline()">💳 Pay Online Now</button>
-        <div class="payment-security">🔒 256-bit SSL Encrypted · Powered by Razorpay & Stripe</div>
+        <button class="pay-btn" onclick="payOnline()">💳 Pay via Razorpay</button>
+        <div class="payment-security">🔒 256-bit SSL Encrypted · Powered by Razorpay</div>
+
+        <!-- UPI DIRECT PAYMENT -->
+        <div style="margin-top:2rem;background:var(--white);border:2px dashed var(--teal-mid);border-radius:var(--radius-lg);padding:1.5rem;text-align:center;">
+          <p style="font-size:0.8rem;font-weight:700;color:var(--teal);letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem">⚡ Or Pay Directly via UPI</p>
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=upi://pay?pa=officialkrishnaa02-2@okicici%26pn=Physicwell%20Rehab%20Center%26cu=INR" alt="UPI QR Code" style="width:160px;height:160px;border-radius:12px;border:3px solid var(--teal-mid);"/>
+          <div style="margin-top:1rem;">
+            <p style="font-size:0.85rem;color:var(--text-mid);margin-bottom:0.5rem">Scan with any UPI app</p>
+            <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;">
+              <span style="font-size:1.3rem;">📱</span>
+              <span style="font-size:1.3rem;">💚</span>
+              <span style="font-size:1.3rem;">💙</span>
+              <span style="font-size:0.75rem;color:var(--text-light)">GPay · PhonePe · Paytm · Any UPI</span>
+            </div>
+            <div style="background:var(--teal-pale);border:1px solid var(--teal-mid);border-radius:8px;padding:8px 16px;margin-top:0.8rem;display:inline-block;">
+              <p style="font-size:0.78rem;color:var(--text-light);margin-bottom:2px;">UPI ID</p>
+              <p style="font-size:0.9rem;font-weight:700;color:var(--teal);">officialkrishnaa02-2@okicici</p>
+            </div>
+            <br/>
+            <button onclick="copyUPI()" style="margin-top:0.8rem;background:var(--teal);color:white;border:none;padding:8px 20px;border-radius:8px;font-size:0.82rem;font-weight:700;cursor:pointer;" id="copyBtn">📋 Copy UPI ID</button>
+          </div>
+        </div>
       </div>
       <div class="reveal reveal-delay-1">
         <div class="payment-visual">
@@ -952,6 +973,84 @@
             <li>No extra charges or hidden fees</li>
             <li>24/7 payment support available</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENT CONFIRMATION -->
+<section id="payment-confirm" style="background:var(--white);padding:60px 2rem;">
+  <div class="section-inner">
+    <div class="section-header center reveal">
+      <span class="section-tag">Payment Done?</span>
+      <h2 class="section-title">Confirm Your <em>Payment</em></h2>
+      <p class="section-sub">UPI se payment karne ke baad yahan transaction details submit karo — taaki hum confirm kar sakein.</p>
+    </div>
+    <div style="max-width:600px;margin:0 auto;" class="reveal">
+      <div class="form-card">
+        <div id="payConfirmForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Aapka Naam *</label>
+              <input type="text" id="pcName" placeholder="Full Name"/>
+            </div>
+            <div class="form-group">
+              <label>Phone Number *</label>
+              <input type="tel" id="pcPhone" placeholder="+91 98765 43210"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="pcEmail" placeholder="your@email.com"/>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Amount Paid (₹) *</label>
+              <input type="number" id="pcAmount" placeholder="500"/>
+            </div>
+            <div class="form-group">
+              <label>UPI Transaction ID *</label>
+              <input type="text" id="pcTxnId" placeholder="e.g. 123456789012"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Payment App *</label>
+            <select id="pcApp">
+              <option value="">Select App</option>
+              <option>Google Pay</option>
+              <option>PhonePe</option>
+              <option>Paytm</option>
+              <option>BHIM UPI</option>
+              <option>Amazon Pay</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Service (Optional)</label>
+            <select id="pcService">
+              <option value="">Select Service</option>
+              <option>Orthopedic Physiotherapy</option>
+              <option>Sports Injury Rehabilitation</option>
+              <option>Neurological Physiotherapy</option>
+              <option>Pediatric Physiotherapy</option>
+              <option>Geriatric Physiotherapy</option>
+              <option>Post-Surgical Rehabilitation</option>
+              <option>Chronic Pain Management</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Additional Notes</label>
+            <textarea id="pcNotes" placeholder="Koi aur information..." rows="3"></textarea>
+          </div>
+          <button class="form-submit" onclick="submitPaymentConfirm()">✅ Submit Payment Confirmation</button>
+        </div>
+        <div class="form-success" id="payConfirmSuccess">
+          <div style="font-size:4rem">✅</div>
+          <h3>Payment Confirmed!</h3>
+          <p>Shukriya! Aapki payment details receive ho gayi hain. Hum jald hi confirm karenge.</p>
+          <br/>
+          <button onclick="resetPayConfirm()" class="btn-primary" style="margin:0 auto;display:inline-flex">Submit Another →</button>
         </div>
       </div>
     </div>
@@ -1285,6 +1384,81 @@ function toggleFaq(el) {
   if (!isOpen) item.classList.add('open');
 }
 
+// PAYMENT CONFIRMATION FORM
+async function submitPaymentConfirm() {
+  const name  = document.getElementById('pcName').value.trim();
+  const phone = document.getElementById('pcPhone').value.trim();
+  const amount = document.getElementById('pcAmount').value.trim();
+  const txnId = document.getElementById('pcTxnId').value.trim();
+  const app   = document.getElementById('pcApp').value;
+
+  if (!name || !phone || !amount || !txnId || !app) {
+    alert('Please fill all required fields.'); return;
+  }
+
+  const btn = document.querySelector('#payConfirmForm .form-submit');
+  btn.textContent = 'Submitting...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch(`${API}/api/contact`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name,
+        email: document.getElementById('pcEmail').value.trim() || 'Not provided',
+        phone,
+        subject: `💳 UPI Payment Confirmation - ₹${amount}`,
+        message: `Transaction ID: ${txnId}\nApp: ${app}\nAmount: ₹${amount}\nService: ${document.getElementById('pcService').value || 'Not specified'}\nNotes: ${document.getElementById('pcNotes').value || 'None'}`
+      })
+    });
+    const data = await res.json();
+    if (data.success) {
+      document.getElementById('payConfirmForm').style.display = 'none';
+      document.getElementById('payConfirmSuccess').style.display = 'block';
+    } else {
+      alert('Error: ' + data.message);
+    }
+  } catch (err) {
+    alert('Server error. Please try again.');
+  } finally {
+    btn.textContent = '✅ Submit Payment Confirmation';
+    btn.disabled = false;
+  }
+}
+
+function resetPayConfirm() {
+  document.getElementById('payConfirmForm').style.display = 'block';
+  document.getElementById('payConfirmSuccess').style.display = 'none';
+  ['pcName','pcPhone','pcEmail','pcAmount','pcTxnId','pcApp','pcService','pcNotes']
+    .forEach(id => document.getElementById(id).value = '');
+}
+
+// COPY UPI ID
+function copyUPI() {
+  navigator.clipboard.writeText('officialkrishnaa02-2@okicici');
+  const btn = document.getElementById('copyBtn');
+  btn.textContent = '✅ Copied!';
+  btn.style.background = 'green';
+  setTimeout(() => {
+    btn.textContent = '📋 Copy UPI ID';
+    btn.style.background = 'var(--teal)';
+  }, 2000);
+}
+
+// ─── WAKE UP BACKEND ON PAGE LOAD ────────────────────────────────
+(async function wakeUpBackend() {
+  try {
+    await fetch(`${API}/api/health`);
+    console.log('✅ Backend is awake!');
+  } catch(e) {
+    // Try again after 5 seconds
+    setTimeout(async () => {
+      try { await fetch(`${API}/api/health`); } catch(e) {}
+    }, 5000);
+  }
+})();
+
 // ─── LIVE BACKEND URL ─────────────────────────────────────────────
 const API = 'https://physicwell-backend.onrender.com';
 
@@ -1295,37 +1469,54 @@ async function submitAppt() {
   if (vals.some(v => !v)) { alert('Please fill in all required fields.'); return; }
 
   const btn = document.querySelector('.form-submit');
-  btn.textContent = 'Booking...';
+  btn.textContent = '⏳ Connecting to server...';
   btn.disabled = true;
 
-  try {
-    const res = await fetch(`${API}/api/appointments`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        patientName: document.getElementById('patName').value.trim(),
-        phone:       document.getElementById('patPhone').value.trim(),
-        email:       document.getElementById('patEmail').value.trim(),
-        service:     document.getElementById('patService').value.trim(),
-        date:        document.getElementById('patDate').value,
-        time:        document.getElementById('patTime').value,
-        notes:       document.getElementById('patNotes').value.trim()
-      })
-    });
-    const data = await res.json();
+  // First wake up the server
+  try { await fetch(`${API}/api/health`); } catch(e) {}
 
-    if (data.success) {
-      document.getElementById('apptForm').style.display = 'none';
-      document.getElementById('apptSuccess').style.display = 'block';
-    } else {
-      alert('❌ ' + (data.message || 'Something went wrong. Please try again.'));
+  btn.textContent = '📅 Booking your appointment...';
+
+  const bookingData = {
+    patientName: document.getElementById('patName').value.trim(),
+    phone:       document.getElementById('patPhone').value.trim(),
+    email:       document.getElementById('patEmail').value.trim(),
+    service:     document.getElementById('patService').value.trim(),
+    date:        document.getElementById('patDate').value,
+    time:        document.getElementById('patTime').value,
+    notes:       document.getElementById('patNotes').value.trim()
+  };
+
+  // Try upto 3 times
+  let lastError;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      if (attempt > 1) btn.textContent = `⏳ Retrying... (${attempt}/3)`;
+      const res = await fetch(`${API}/api/appointments`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(bookingData)
+      });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('apptForm').style.display = 'none';
+        document.getElementById('apptSuccess').style.display = 'block';
+        btn.textContent = '📅 Confirm Appointment';
+        btn.disabled = false;
+        return;
+      } else {
+        lastError = data.message;
+        break;
+      }
+    } catch (err) {
+      lastError = err.message;
+      await new Promise(r => setTimeout(r, 3000)); // Wait 3 sec before retry
     }
-  } catch (err) {
-    alert('❌ Server se connect nahi ho pa raha. Please try again.');
-  } finally {
-    btn.textContent = '📅 Confirm Appointment';
-    btn.disabled = false;
   }
+
+  alert('❌ ' + (lastError || 'Something went wrong. Please try again.'));
+  btn.textContent = '📅 Confirm Appointment';
+  btn.disabled = false;
 }
 
 function resetForm() {
