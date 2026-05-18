@@ -1505,8 +1505,10 @@ async function payOnline() {
 }
 
 // ─── SET MIN DATE ─────────────────────────────────────────────────
-const today = new Date().toISOString().split('T')[0];
-document.getElementById('patDate').min = today;
+const dateField = document.getElementById('patDate');
+if (dateField) {
+  dateField.min = new Date().toISOString().split('T')[0];
+}
 </script>
 </body>
 </html>
