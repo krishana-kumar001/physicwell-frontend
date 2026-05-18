@@ -910,147 +910,47 @@
 <!-- PAYMENT -->
 <section id="payment">
   <div class="section-inner">
-    <div class="payment-grid">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
       <div class="reveal">
         <span class="section-tag">Pay Online</span>
-        <h2 class="section-title">Secure <em>Online</em> Payment</h2>
-        <p class="section-sub">Pay conveniently for your sessions online using your preferred payment method. All transactions are 100% secure and encrypted.</p>
-        <div class="payment-methods">
-          <div class="payment-method">
-            <div class="payment-method-icon">💳</div>
-            <h4>Credit/Debit Card</h4>
-            <p>Visa, Mastercard, RuPay</p>
-          </div>
-          <div class="payment-method">
-            <div class="payment-method-icon">🏦</div>
-            <h4>Net Banking</h4>
-            <p>All major banks</p>
-          </div>
-          <div class="payment-method">
-            <div class="payment-method-icon">📱</div>
-            <h4>UPI Payment</h4>
-            <p>GPay, PhonePe, Paytm</p>
-          </div>
-          <div class="payment-method">
-            <div class="payment-method-icon">🏥</div>
-            <h4>Cash / Card</h4>
-            <p>At the Center</p>
-          </div>
-        </div>
-        <button class="pay-btn" onclick="payOnline()">💳 Pay via Razorpay</button>
-        <div class="payment-security">🔒 256-bit SSL Encrypted · Powered by Razorpay</div>
-
-        <!-- UPI DIRECT PAYMENT -->
-        <div style="margin-top:2rem;background:var(--white);border:2px dashed var(--teal-mid);border-radius:var(--radius-lg);padding:1.5rem;text-align:center;">
-          <p style="font-size:0.8rem;font-weight:700;color:var(--teal);letter-spacing:1px;text-transform:uppercase;margin-bottom:1rem">⚡ Or Pay Directly via UPI</p>
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=upi://pay?pa=officialkrishnaa02-2@okicici%26pn=Physicwell%20Rehab%20Center%26cu=INR" alt="UPI QR Code" style="width:160px;height:160px;border-radius:12px;border:3px solid var(--teal-mid);"/>
-          <div style="margin-top:1rem;">
-            <p style="font-size:0.85rem;color:var(--text-mid);margin-bottom:0.5rem">Scan with any UPI app</p>
-            <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;">
-              <span style="font-size:1.3rem;">📱</span>
-              <span style="font-size:1.3rem;">💚</span>
-              <span style="font-size:1.3rem;">💙</span>
-              <span style="font-size:0.75rem;color:var(--text-light)">GPay · PhonePe · Paytm · Any UPI</span>
+        <h2 class="section-title">Pay via <em>UPI</em></h2>
+        <p class="section-sub">Seedha apne UPI app se payment karein — GPay, PhonePe, Paytm ya koi bhi UPI app. Fast, secure aur free!</p>
+        <div style="margin-top:2rem;background:var(--white);border:2px dashed var(--teal-mid);border-radius:var(--radius-lg);padding:2rem;text-align:center;">
+          <p style="font-size:0.8rem;font-weight:700;color:var(--teal);letter-spacing:1px;text-transform:uppercase;margin-bottom:1.2rem">📱 Scan & Pay</p>
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=officialkrishnaa02-2@okicici%26pn=Physicwell%20Rehab%20Center%26cu=INR" alt="UPI QR Code" style="width:180px;height:180px;border-radius:12px;border:3px solid var(--teal-mid);"/>
+          <div style="margin-top:1.2rem;">
+            <p style="font-size:0.85rem;color:var(--text-mid);margin-bottom:0.8rem">Scan with any UPI app</p>
+            <div style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:1rem;">
+              <span style="background:var(--teal-pale);padding:4px 12px;border-radius:20px;font-size:0.78rem;color:var(--teal);font-weight:600;">GPay</span>
+              <span style="background:var(--teal-pale);padding:4px 12px;border-radius:20px;font-size:0.78rem;color:var(--teal);font-weight:600;">PhonePe</span>
+              <span style="background:var(--teal-pale);padding:4px 12px;border-radius:20px;font-size:0.78rem;color:var(--teal);font-weight:600;">Paytm</span>
+              <span style="background:var(--teal-pale);padding:4px 12px;border-radius:20px;font-size:0.78rem;color:var(--teal);font-weight:600;">BHIM</span>
             </div>
-            <div style="background:var(--teal-pale);border:1px solid var(--teal-mid);border-radius:8px;padding:8px 16px;margin-top:0.8rem;display:inline-block;">
-              <p style="font-size:0.78rem;color:var(--text-light);margin-bottom:2px;">UPI ID</p>
-              <p style="font-size:0.9rem;font-weight:700;color:var(--teal);">officialkrishnaa02-2@okicici</p>
+            <div style="background:var(--teal-pale);border:1px solid var(--teal-mid);border-radius:8px;padding:10px 20px;display:inline-block;">
+              <p style="font-size:0.75rem;color:var(--text-light);margin-bottom:3px;">UPI ID</p>
+              <p style="font-size:1rem;font-weight:700;color:var(--teal);">officialkrishnaa02-2@okicici</p>
             </div>
             <br/>
-            <button onclick="copyUPI()" style="margin-top:0.8rem;background:var(--teal);color:white;border:none;padding:8px 20px;border-radius:8px;font-size:0.82rem;font-weight:700;cursor:pointer;" id="copyBtn">📋 Copy UPI ID</button>
+            <button onclick="copyUPI()" style="margin-top:1rem;background:var(--teal);color:white;border:none;padding:10px 24px;border-radius:8px;font-size:0.88rem;font-weight:700;cursor:pointer;" id="copyBtn">📋 Copy UPI ID</button>
           </div>
         </div>
       </div>
       <div class="reveal reveal-delay-1">
         <div class="payment-visual">
-          <h3>Why Pay Online?</h3>
-          <p>Skip the queue and secure your spot instantly. Online payments give you a seamless, paperless experience with instant receipts.</p>
+          <h3>UPI Payment Benefits</h3>
+          <p>Safe, instant aur hassle-free payment directly to Physicwell Rehab Center.</p>
           <ul class="pay-features">
-            <li>Instant digital receipt generation</li>
-            <li>Secure payment history tracking</li>
-            <li>Multiple payment gateway support</li>
-            <li>Insurance claim documentation</li>
-            <li>No extra charges or hidden fees</li>
-            <li>24/7 payment support available</li>
+            <li>Instant payment — no waiting</li>
+            <li>Zero transaction charges</li>
+            <li>All UPI apps supported</li>
+            <li>Safe & secure transactions</li>
+            <li>24/7 payment available</li>
+            <li>Screenshot as payment proof</li>
           </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PAYMENT CONFIRMATION -->
-<section id="payment-confirm" style="background:var(--white);padding:60px 2rem;">
-  <div class="section-inner">
-    <div class="section-header center reveal">
-      <span class="section-tag">Payment Done?</span>
-      <h2 class="section-title">Confirm Your <em>Payment</em></h2>
-      <p class="section-sub">UPI se payment karne ke baad yahan transaction details submit karo — taaki hum confirm kar sakein.</p>
-    </div>
-    <div style="max-width:600px;margin:0 auto;" class="reveal">
-      <div class="form-card">
-        <div id="payConfirmForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label>Aapka Naam *</label>
-              <input type="text" id="pcName" placeholder="Full Name"/>
-            </div>
-            <div class="form-group">
-              <label>Phone Number *</label>
-              <input type="tel" id="pcPhone" placeholder="+91 98765 43210"/>
-            </div>
+          <div style="margin-top:1.5rem;background:rgba(255,255,255,0.1);border-radius:10px;padding:1rem;">
+            <p style="font-size:0.85rem;color:rgba(255,255,255,0.8);">💡 <strong>Tip:</strong> Payment ke baad apna screenshot WhatsApp pe bhejein confirmation ke liye!</p>
+            <a href="https://wa.me/919639548897" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin-top:0.8rem;background:#25D366;color:white;padding:8px 16px;border-radius:8px;font-size:0.85rem;font-weight:700;text-decoration:none;">💬 Send on WhatsApp</a>
           </div>
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" id="pcEmail" placeholder="your@email.com"/>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Amount Paid (₹) *</label>
-              <input type="number" id="pcAmount" placeholder="500"/>
-            </div>
-            <div class="form-group">
-              <label>UPI Transaction ID *</label>
-              <input type="text" id="pcTxnId" placeholder="e.g. 123456789012"/>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Payment App *</label>
-            <select id="pcApp">
-              <option value="">Select App</option>
-              <option>Google Pay</option>
-              <option>PhonePe</option>
-              <option>Paytm</option>
-              <option>BHIM UPI</option>
-              <option>Amazon Pay</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Service (Optional)</label>
-            <select id="pcService">
-              <option value="">Select Service</option>
-              <option>Orthopedic Physiotherapy</option>
-              <option>Sports Injury Rehabilitation</option>
-              <option>Neurological Physiotherapy</option>
-              <option>Pediatric Physiotherapy</option>
-              <option>Geriatric Physiotherapy</option>
-              <option>Post-Surgical Rehabilitation</option>
-              <option>Chronic Pain Management</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Additional Notes</label>
-            <textarea id="pcNotes" placeholder="Koi aur information..." rows="3"></textarea>
-          </div>
-          <button class="form-submit" onclick="submitPaymentConfirm()">✅ Submit Payment Confirmation</button>
-        </div>
-        <div class="form-success" id="payConfirmSuccess">
-          <div style="font-size:4rem">✅</div>
-          <h3>Payment Confirmed!</h3>
-          <p>Shukriya! Aapki payment details receive ho gayi hain. Hum jald hi confirm karenge.</p>
-          <br/>
-          <button onclick="resetPayConfirm()" class="btn-primary" style="margin:0 auto;display:inline-flex">Submit Another →</button>
         </div>
       </div>
     </div>
