@@ -56,87 +56,79 @@
   /* NAVBAR */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    background: var(--teal-dark);
-    box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+    background: linear-gradient(135deg, #073f4a 0%, #0a5c6b 50%, #0e7a8e 100%);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
     transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(7,63,74,0.4);
   }
-  [data-theme="dark"] nav { background: #041e24; }
+  [data-theme="dark"] nav { background: linear-gradient(135deg, #041f25 0%, #073f4a 50%, #0a5c6b 100%); }
+  .nav-links a { color: rgba(255,255,255,0.9) !important; font-weight: 600; }
+  .nav-links a::after { background: #b8894a; }
+  .nav-links a:hover { color: white !important; }
+  .logo-text { color: white !important; font-size: 1.4rem !important; }
+  .logo-sub { color: rgba(255,255,255,0.7) !important; }
+  .logo-icon { background: rgba(255,255,255,0.15) !important; color: white !important; border: 1px solid rgba(255,255,255,0.2); }
+  .nav-btn { background: #b8894a !important; color: white !important; border: none !important; }
+  .nav-btn:hover { background: #d4a96a !important; }
+  .theme-btn { background: rgba(255,255,255,0.1) !important; border-color: rgba(255,255,255,0.2) !important; color: white !important; }
+  .theme-btn:hover { background: rgba(255,255,255,0.2) !important; }
+  .hamburger span { background: white !important; }
   .nav-inner {
     max-width: 1200px; margin: 0 auto;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 1.5rem; height: 64px;
+    padding: 0 2rem; height: 70px;
   }
-  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
   .logo-icon {
     width: 42px; height: 42px; border-radius: 10px;
-    background: rgba(255,255,255,0.15);
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
     display: flex; align-items: center; justify-content: center;
     font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700;
-    color: white; letter-spacing: -1px; border: 1px solid rgba(255,255,255,0.2);
+    color: white; letter-spacing: -1px;
   }
-  .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 700; color: #ffffff; line-height: 1.1; }
-  .logo-sub { font-size: 0.62rem; color: rgba(255,255,255,0.6); font-family: 'Nunito', sans-serif; letter-spacing: 2px; text-transform: uppercase; }
-  .nav-links { display: flex; align-items: center; gap: 1.6rem; list-style: none; }
+  .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--teal); line-height: 1.1; }
+  .logo-sub { font-size: 0.65rem; color: var(--text-light); font-family: 'Nunito', sans-serif; letter-spacing: 2px; text-transform: uppercase; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
   .nav-links a {
-    text-decoration: none; color: rgba(255,255,255,0.85); font-size: 0.88rem; font-weight: 600;
-    letter-spacing: 0.3px; transition: color 0.2s; position: relative; white-space: nowrap;
+    text-decoration: none; color: var(--text-mid); font-size: 0.9rem; font-weight: 600;
+    letter-spacing: 0.3px; transition: color 0.2s; position: relative;
   }
   .nav-links a::after {
     content: ''; position: absolute; bottom: -3px; left: 0; right: 0; height: 2px;
-    background: var(--gold-light); transform: scaleX(0); transition: transform 0.2s;
+    background: var(--teal); transform: scaleX(0); transition: transform 0.2s;
   }
-  .nav-links a:hover { color: #ffffff; }
+  .nav-links a:hover { color: var(--teal); }
   .nav-links a:hover::after { transform: scaleX(1); }
   .nav-btn {
-    background: var(--gold); color: white; padding: 0.5rem 1.2rem;
-    border-radius: 8px; font-size: 0.85rem; font-weight: 700;
+    background: var(--teal); color: white; padding: 0.55rem 1.4rem;
+    border-radius: 8px; font-size: 0.88rem; font-weight: 600;
     border: none; cursor: pointer; transition: all 0.2s; text-decoration: none;
-    white-space: nowrap;
   }
-  .nav-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .nav-btn:hover { background: var(--teal-dark); transform: translateY(-1px); }
   .theme-btn {
-    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;
+    background: var(--teal-pale); border: 1px solid var(--border); border-radius: 8px;
     width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
-    cursor: pointer; font-size: 1.1rem; transition: all 0.2s; color: white; flex-shrink: 0;
+    cursor: pointer; font-size: 1.1rem; transition: all 0.2s; color: var(--teal);
   }
-  .theme-btn:hover { background: rgba(255,255,255,0.2); }
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; flex-shrink: 0; }
-  .hamburger span { width: 24px; height: 2px; background: #ffffff; border-radius: 2px; transition: all 0.3s; }
-  .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-  .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .theme-btn:hover { background: var(--teal-mid); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { width: 24px; height: 2px; background: var(--text-dark); border-radius: 2px; transition: all 0.3s; }
 
   /* MOBILE MENU */
   .mobile-menu {
-    display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
-    background: var(--teal-dark); z-index: 999;
-    padding: 1.5rem 1.5rem 2rem;
-    flex-direction: column; gap: 0;
-    overflow-y: auto;
+    display: none; position: fixed; top: 70px; left: 0; right: 0; bottom: 0;
+    background: var(--white); z-index: 999; padding: 2rem; flex-direction: column; gap: 1.5rem;
   }
-  [data-theme="dark"] .mobile-menu { background: #041e24; }
   .mobile-menu.open { display: flex; }
   .mobile-menu a {
-    font-size: 1.1rem; font-weight: 600; color: rgba(255,255,255,0.9);
-    text-decoration: none; padding: 1rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.12);
-    display: flex; align-items: center; gap: 0.5rem;
-    transition: color 0.2s, padding-left 0.2s;
-  }
-  .mobile-menu a:hover { color: #ffffff; padding-left: 0.5rem; }
-  .mobile-menu a:last-child { border-bottom: none; }
-  .mobile-menu-cta {
-    margin-top: 1.5rem;
-    background: var(--gold); color: white;
-    padding: 0.9rem 1.5rem; border-radius: 10px;
-    text-align: center; font-weight: 700; font-size: 1rem;
-    text-decoration: none !important; border-bottom: none !important;
-    display: block !important;
+    font-size: 1.2rem; font-weight: 600; color: var(--text-dark);
+    text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1rem;
   }
 
   /* HERO */
   #hero {
-    min-height: 100vh; padding: 90px 2rem 60px;
+    min-height: 100vh; padding: 100px 2rem 60px;
     background: var(--white);
     position: relative; overflow: hidden;
     display: flex; align-items: center;
@@ -601,23 +593,14 @@
     .payment-methods { grid-template-columns: 1fr 1fr; }
     .faq-visual { display: none; }
     .footer-grid { grid-template-columns: 1fr; }
-    .nav-inner { padding: 0 1rem; height: 60px; }
-    .logo-text { font-size: 1.2rem; }
-    .mobile-menu { top: 60px; }
   }
   @media (max-width: 600px) {
     section { padding: 60px 1.2rem; }
-    .hero-stats { gap: 1rem; flex-wrap: wrap; justify-content: center; }
-    .hero-stats .stat-item { min-width: 80px; }
+    .hero-stats { gap: 1.5rem; }
     .services-grid { grid-template-columns: 1fr; }
     .testimonials-track { gap: 1rem; }
     .testimonial-card { flex: 0 0 280px; }
     .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
-    #hero { padding: 80px 1.2rem 50px; }
-    .hero-btns { flex-direction: column; gap: 0.8rem; }
-    .hero-btns .btn-primary, .hero-btns .btn-secondary { width: 100%; justify-content: center; }
-    .section-title { font-size: clamp(1.8rem, 6vw, 2.5rem); }
-    .payment-methods { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -660,14 +643,13 @@
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="closeMobile()">🏥 About Us</a>
-  <a href="#services" onclick="closeMobile()">💆 Services</a>
-  <a href="#appointment" onclick="closeMobile()">📅 Book Appointment</a>
-  <a href="#payment" onclick="closeMobile()">💳 Pay Online</a>
-  <a href="#testimonials" onclick="closeMobile()">⭐ Testimonials</a>
-  <a href="#faq" onclick="closeMobile()">❓ FAQ</a>
-  <a href="#contact" onclick="closeMobile()">📞 Contact</a>
-  <a href="#appointment" onclick="closeMobile()" class="mobile-menu-cta">📅 Book Appointment Now</a>
+  <a href="#about" onclick="closeMobile()">About Us</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#appointment" onclick="closeMobile()">Book Appointment</a>
+  <a href="#payment" onclick="closeMobile()">Pay Online</a>
+  <a href="#testimonials" onclick="closeMobile()">Testimonials</a>
+  <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
 </div>
 
 <!-- HERO -->
@@ -887,12 +869,12 @@
 <!-- PAYMENT -->
 <section id="payment">
   <div class="section-inner">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
-      <div class="reveal">
+    <div style="max-width:550px;margin:0 auto;">
+      <div class="reveal" style="text-align:center;">
         <span class="section-tag">Pay Online</span>
         <h2 class="section-title">Pay via <em>UPI</em></h2>
-        <p class="section-sub">Seedha apne UPI app se payment karein — GPay, PhonePe, Paytm ya koi bhi UPI app. Fast, secure aur free!</p>
-        <div style="margin-top:2rem;background:var(--white);border:2px dashed var(--teal-mid);border-radius:var(--radius-lg);padding:2rem;text-align:center;">
+        <p class="section-sub" style="margin:0 auto 2rem;">Seedha apne UPI app se payment karein — GPay, PhonePe, Paytm ya koi bhi UPI app. Fast, secure aur free!</p>
+        <div style="background:var(--white);border:2px dashed var(--teal-mid);border-radius:var(--radius-lg);padding:2rem;text-align:center;">
           <p style="font-size:0.8rem;font-weight:700;color:var(--teal);letter-spacing:1px;text-transform:uppercase;margin-bottom:1.2rem">📱 Scan & Pay</p>
           <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=officialkrishnaa02-2@okicici%26pn=Physicwell%20Rehab%20Center%26cu=INR" alt="UPI QR Code" style="width:180px;height:180px;border-radius:12px;border:3px solid var(--teal-mid);"/>
           <div style="margin-top:1.2rem;">
@@ -910,23 +892,12 @@
             <br/>
             <button onclick="copyUPI()" style="margin-top:1rem;background:var(--teal);color:white;border:none;padding:10px 24px;border-radius:8px;font-size:0.88rem;font-weight:700;cursor:pointer;" id="copyBtn">📋 Copy UPI ID</button>
           </div>
-        </div>
-      </div>
-      <div class="reveal reveal-delay-1">
-        <div class="payment-visual">
-          <h3>UPI Payment Benefits</h3>
-          <p>Safe, instant aur hassle-free payment directly to Physicwell Rehab Center.</p>
-          <ul class="pay-features">
-            <li>Instant payment — no waiting</li>
-            <li>Zero transaction charges</li>
-            <li>All UPI apps supported</li>
-            <li>Safe & secure transactions</li>
-            <li>24/7 payment available</li>
-            <li>Screenshot as payment proof</li>
-          </ul>
-          <div style="margin-top:1.5rem;background:rgba(255,255,255,0.1);border-radius:10px;padding:1rem;">
-            <p style="font-size:0.85rem;color:rgba(255,255,255,0.8);">💡 <strong>Tip:</strong> Payment ke baad apna screenshot WhatsApp pe bhejein confirmation ke liye!</p>
+          <!-- TIP -->
+          <div style="margin-top:1.5rem;background:var(--teal-pale);border-radius:10px;padding:1rem;text-align:center;">
+            <p style="font-size:0.85rem;color:var(--teal);"><strong>💡 Tip:</strong> Payment ke baad apna screenshot WhatsApp pe bhejein confirmation ke liye!</p>
+            <div style="display:flex;justify-content:center;">
             <a href="https://wa.me/919639548897" target="_blank" style="display:inline-flex;align-items:center;gap:8px;margin-top:0.8rem;background:#25D366;color:white;padding:8px 16px;border-radius:8px;font-size:0.85rem;font-weight:700;text-decoration:none;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="20px" height="20px"><path fill="#fff" d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"/><path fill="#25D366" d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"/><path fill="#fff" fill-rule="evenodd" d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z" clip-rule="evenodd"/></svg> Send on WhatsApp</a>
+            </div>
           </div>
         </div>
       </div>
@@ -984,10 +955,7 @@
         </div>
       </div>
     </div>
-    <div class="testimonials-controls">
-      <button class="tcontrol" onclick="scrollTestimonials(-1)">←</button>
-      <button class="tcontrol" onclick="scrollTestimonials(1)">→</button>
-    </div>
+    <p style="text-align:center;margin-top:1.2rem;font-size:0.8rem;color:rgba(255,255,255,0.4);letter-spacing:1px;">← Swipe to see more reviews →</p>
   </div>
 </section>
 
@@ -1240,14 +1208,8 @@ themeBtn.onclick = () => {
 // HAMBURGER
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
-hamburger.onclick = () => {
-  mobileMenu.classList.toggle('open');
-  hamburger.classList.toggle('active');
-};
-function closeMobile() {
-  mobileMenu.classList.remove('open');
-  hamburger.classList.remove('active');
-}
+hamburger.onclick = () => mobileMenu.classList.toggle('open');
+function closeMobile() { mobileMenu.classList.remove('open'); }
 
 // SCROLL EFFECTS
 const scrollTop = document.getElementById('scrollTop');
@@ -1463,9 +1425,23 @@ function resetContact() {
   ['cName','cPhone','cEmail','cSubject','cMessage'].forEach(id => document.getElementById(id).value = '');
 }
 
-// ─── TESTIMONIALS SCROLL ─────────────────────────────────────────
+// ─── TESTIMONIALS SWIPE & DRAG ────────────────────────────────────
+const track = document.getElementById('testimonialsTrack');
+let isDown = false, startX, scrollLeft;
+
+// Mouse drag
+track.addEventListener('mousedown', e => { isDown = true; track.style.cursor = 'grabbing'; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; });
+track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = 'grab'; });
+track.addEventListener('mouseup', () => { isDown = false; track.style.cursor = 'grab'; });
+track.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); const x = e.pageX - track.offsetLeft; track.scrollLeft = scrollLeft - (x - startX) * 1.5; });
+
+// Touch swipe
+let touchStartX = 0;
+track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+track.addEventListener('touchmove', e => { const diff = touchStartX - e.touches[0].clientX; track.scrollLeft += diff * 0.5; }, { passive: true });
+track.style.cursor = 'grab';
+
 function scrollTestimonials(dir) {
-  const track = document.getElementById('testimonialsTrack');
   track.scrollBy({ left: dir * 370, behavior: 'smooth' });
 }
 
