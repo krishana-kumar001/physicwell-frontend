@@ -1376,41 +1376,18 @@ async function submitContact() {
   const name    = document.getElementById('cName').value.trim();
   const email   = document.getElementById('cEmail').value.trim();
   const message = document.getElementById('cMessage').value.trim();
+  const phone   = document.getElementById('cPhone').value.trim();
+  const subject = document.getElementById('cSubject').value.trim();
 
   if (!name || !email || !message) { alert('Please fill in all required fields.'); return; }
 
-  const btn = document.querySelector('#contactForm .form-submit');
-  btn.textContent = 'Sending...';
-  btn.disabled = true;
+  // Send directly to WhatsApp
+  const waMessage = `*New Contact Message* 🏥%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Phone:* ${encodeURIComponent(phone || 'Not provided')}%0A*Subject:* ${encodeURIComponent(subject || 'General Inquiry')}%0A*Message:* ${encodeURIComponent(message)}`;
+  
+  window.open(`https://wa.me/919639548897?text=${waMessage}`, '_blank');
 
-  // Show success after 4 seconds regardless
-  const timer = setTimeout(() => {
-    document.getElementById('contactForm').style.display = 'none';
-    document.getElementById('contactSuccess').style.display = 'block';
-    btn.textContent = '📩 Send Message';
-    btn.disabled = false;
-  }, 4000);
-
-  try {
-    const res = await fetch(`${API}/api/contact`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name, email,
-        phone:   document.getElementById('cPhone').value.trim(),
-        subject: document.getElementById('cSubject').value.trim(),
-        message
-      })
-    });
-    clearTimeout(timer);
-    document.getElementById('contactForm').style.display = 'none';
-    document.getElementById('contactSuccess').style.display = 'block';
-  } catch (err) {
-    // Timer will show success anyway
-  } finally {
-    btn.textContent = '📩 Send Message';
-    btn.disabled = false;
-  }
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('contactSuccess').style.display = 'block';
 }
 
 function resetContact() {
