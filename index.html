@@ -9,7 +9,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <style>
   :root {
     --teal: #0a5c6b;
@@ -358,41 +357,6 @@
 
   /* PAYMENT */
   #payment { background: var(--off-white); }
-  .payment-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; }
-  .payment-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
-  .payment-method {
-    background: var(--white); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 1.5rem; text-align: center;
-    transition: all 0.2s;
-  }
-  .payment-method:hover { border-color: var(--teal); box-shadow: 0 4px 20px var(--shadow); }
-  .payment-method-icon { font-size: 2rem; margin-bottom: 0.5rem; }
-  .payment-method h4 { font-size: 0.9rem; color: var(--text-dark); font-family: 'Nunito', sans-serif; font-weight: 700; }
-  .payment-method p { font-size: 0.78rem; color: var(--text-light); margin-top: 3px; }
-  .pay-btn {
-    background: linear-gradient(135deg, var(--teal), var(--teal-light));
-    color: white; padding: 1rem 2.5rem; border-radius: var(--radius);
-    font-size: 1rem; font-weight: 700; border: none; cursor: pointer;
-    transition: all 0.25s; margin-top: 2rem; display: inline-flex; align-items: center; gap: 8px;
-    box-shadow: 0 8px 25px rgba(10,92,107,0.35);
-  }
-  .pay-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(10,92,107,0.45); }
-  .payment-security { display: flex; align-items: center; gap: 8px; margin-top: 1rem; font-size: 0.8rem; color: var(--text-light); }
-  .payment-visual {
-    background: linear-gradient(135deg, var(--teal-dark), var(--teal));
-    border-radius: var(--radius-lg); padding: 2.5rem; color: white;
-    position: relative; overflow: hidden;
-  }
-  .payment-visual::before {
-    content: ''; position: absolute; width: 300px; height: 300px;
-    border-radius: 50%; background: rgba(255,255,255,0.05);
-    right: -80px; top: -80px;
-  }
-  .payment-visual h3 { font-size: 1.8rem; margin-bottom: 1rem; color: white; }
-  .payment-visual p { font-size: 0.9rem; color: rgba(255,255,255,0.75); line-height: 1.7; }
-  .pay-features { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 10px; }
-  .pay-features li { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: rgba(255,255,255,0.9); }
-  .pay-features li::before { content: '✓'; background: rgba(255,255,255,0.2); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; flex-shrink: 0; }
 
   /* TESTIMONIALS */
   #testimonials { background: var(--teal-dark); overflow: hidden; }
@@ -420,14 +384,6 @@
   }
   .author-info h4 { font-size: 0.95rem; color: white; font-family: 'Nunito', sans-serif; font-weight: 700; }
   .author-info p { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
-  .testimonials-controls { display: flex; gap: 10px; margin-top: 2rem; }
-  .tcontrol {
-    width: 44px; height: 44px; border-radius: 50%;
-    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-    color: white; font-size: 1.2rem; cursor: pointer;
-    display: flex; align-items: center; justify-content: center; transition: all 0.2s;
-  }
-  .tcontrol:hover { background: rgba(255,255,255,0.2); }
 
   /* FAQ */
   #faq { background: var(--white); }
@@ -573,7 +529,7 @@
 
   /* RESPONSIVE */
   @media (max-width: 900px) {
-    .hero-inner, .about-grid, .appt-grid, .payment-grid, .faq-grid, .contact-grid {
+    .hero-inner, .about-grid, .appt-grid, .faq-grid, .contact-grid {
       grid-template-columns: 1fr;
     }
     .hero-visual { display: none; }
@@ -581,7 +537,7 @@
     .nav-links, .nav-btn { display: none; }
     .hamburger { display: flex; }
     .form-row { grid-template-columns: 1fr; }
-    .payment-methods { grid-template-columns: 1fr 1fr; }
+
     .faq-visual { display: none; }
     .footer-grid { grid-template-columns: 1fr; }
     .appt-grid iframe { height: 600px !important; }
@@ -1219,56 +1175,6 @@ function toggleFaq(el) {
   if (!isOpen) item.classList.add('open');
 }
 
-// PAYMENT CONFIRMATION FORM
-async function submitPaymentConfirm() {
-  const name  = document.getElementById('pcName').value.trim();
-  const phone = document.getElementById('pcPhone').value.trim();
-  const amount = document.getElementById('pcAmount').value.trim();
-  const txnId = document.getElementById('pcTxnId').value.trim();
-  const app   = document.getElementById('pcApp').value;
-
-  if (!name || !phone || !amount || !txnId || !app) {
-    alert('Please fill all required fields.'); return;
-  }
-
-  const btn = document.querySelector('#payConfirmForm .form-submit');
-  btn.textContent = 'Submitting...';
-  btn.disabled = true;
-
-  try {
-    const res = await fetch(`${API}/api/contact`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name,
-        email: document.getElementById('pcEmail').value.trim() || 'Not provided',
-        phone,
-        subject: `💳 UPI Payment Confirmation - ₹${amount}`,
-        message: `Transaction ID: ${txnId}\nApp: ${app}\nAmount: ₹${amount}\nService: ${document.getElementById('pcService').value || 'Not specified'}\nNotes: ${document.getElementById('pcNotes').value || 'None'}`
-      })
-    });
-    const data = await res.json();
-    if (data.success) {
-      document.getElementById('payConfirmForm').style.display = 'none';
-      document.getElementById('payConfirmSuccess').style.display = 'block';
-    } else {
-      alert('Error: ' + data.message);
-    }
-  } catch (err) {
-    alert('Server error. Please try again.');
-  } finally {
-    btn.textContent = '✅ Submit Payment Confirmation';
-    btn.disabled = false;
-  }
-}
-
-function resetPayConfirm() {
-  document.getElementById('payConfirmForm').style.display = 'block';
-  document.getElementById('payConfirmSuccess').style.display = 'none';
-  ['pcName','pcPhone','pcEmail','pcAmount','pcTxnId','pcApp','pcService','pcNotes']
-    .forEach(id => document.getElementById(id).value = '');
-}
-
 // COPY UPI ID
 function copyUPI() {
   navigator.clipboard.writeText('officialkrishnaa02-2@okicici');
@@ -1281,87 +1187,7 @@ function copyUPI() {
   }, 2000);
 }
 
-// ─── WAKE UP BACKEND ON PAGE LOAD ────────────────────────────────
-(async function wakeUpBackend() {
-  try {
-    await fetch(`${API}/api/health`);
-    console.log('✅ Backend is awake!');
-  } catch(e) {
-    // Try again after 5 seconds
-    setTimeout(async () => {
-      try { await fetch(`${API}/api/health`); } catch(e) {}
-    }, 5000);
-  }
-})();
-
-// ─── LIVE BACKEND URL ─────────────────────────────────────────────
-const API = 'https://physicwell-backend.onrender.com';
-
-// ─── APPOINTMENT FORM (Connected to Backend) ──────────────────────
-async function submitAppt() {
-  const fields = ['patName','patPhone','patEmail','patService','patDate','patTime'];
-  const vals = fields.map(id => document.getElementById(id).value.trim());
-  if (vals.some(v => !v)) { alert('Please fill in all required fields.'); return; }
-
-  const btn = document.querySelector('.form-submit');
-  btn.textContent = '⏳ Connecting to server...';
-  btn.disabled = true;
-
-  // First wake up the server
-  try { await fetch(`${API}/api/health`); } catch(e) {}
-
-  btn.textContent = '📅 Booking your appointment...';
-
-  const bookingData = {
-    patientName: document.getElementById('patName').value.trim(),
-    phone:       document.getElementById('patPhone').value.trim(),
-    email:       document.getElementById('patEmail').value.trim(),
-    service:     document.getElementById('patService').value.trim(),
-    date:        document.getElementById('patDate').value,
-    time:        document.getElementById('patTime').value,
-    notes:       document.getElementById('patNotes').value.trim()
-  };
-
-  // Try upto 3 times
-  let lastError;
-  for (let attempt = 1; attempt <= 3; attempt++) {
-    try {
-      if (attempt > 1) btn.textContent = `⏳ Retrying... (${attempt}/3)`;
-      const res = await fetch(`${API}/api/appointments`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(bookingData)
-      });
-      const data = await res.json();
-      if (data.success) {
-        document.getElementById('apptForm').style.display = 'none';
-        document.getElementById('apptSuccess').style.display = 'block';
-        btn.textContent = '📅 Confirm Appointment';
-        btn.disabled = false;
-        return;
-      } else {
-        lastError = data.message;
-        break;
-      }
-    } catch (err) {
-      lastError = err.message;
-      await new Promise(r => setTimeout(r, 3000)); // Wait 3 sec before retry
-    }
-  }
-
-  alert('❌ ' + (lastError || 'Something went wrong. Please try again.'));
-  btn.textContent = '📅 Confirm Appointment';
-  btn.disabled = false;
-}
-
-function resetForm() {
-  document.getElementById('apptForm').style.display = 'block';
-  document.getElementById('apptSuccess').style.display = 'none';
-  ['patName','patPhone','patEmail','patService','patDate','patTime','patNotes']
-    .forEach(id => document.getElementById(id).value = '');
-}
-
-// ─── CONTACT FORM (Connected to Backend) ─────────────────────────
+// ─── CONTACT FORM ─────────────────────────────────────────────────
 async function submitContact() {
   const name    = document.getElementById('cName').value.trim();
   const message = document.getElementById('cMessage').value.trim();
@@ -1386,107 +1212,14 @@ function resetContact() {
 // ─── TESTIMONIALS SWIPE & DRAG ────────────────────────────────────
 const track = document.getElementById('testimonialsTrack');
 let isDown = false, startX, scrollLeft;
-
-// Mouse drag
 track.addEventListener('mousedown', e => { isDown = true; track.style.cursor = 'grabbing'; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; });
 track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = 'grab'; });
 track.addEventListener('mouseup', () => { isDown = false; track.style.cursor = 'grab'; });
 track.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); const x = e.pageX - track.offsetLeft; track.scrollLeft = scrollLeft - (x - startX) * 1.5; });
-
-// Touch swipe
 let touchStartX = 0;
 track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
 track.addEventListener('touchmove', e => { const diff = touchStartX - e.touches[0].clientX; track.scrollLeft += diff * 0.5; }, { passive: true });
 track.style.cursor = 'grab';
-
-function scrollTestimonials(dir) {
-  track.scrollBy({ left: dir * 370, behavior: 'smooth' });
-}
-
-// Load live testimonials from backend
-async function loadTestimonials() {
-  try {
-    const res = await fetch(`${API}/api/testimonials`);
-    const data = await res.json();
-    if (data.success && data.testimonials.length > 0) {
-      const track = document.getElementById('testimonialsTrack');
-      track.innerHTML = data.testimonials.map(t => `
-        <div class="testimonial-card">
-          <div class="testimonial-stars">${'★'.repeat(t.rating)}${'☆'.repeat(5 - t.rating)}</div>
-          <p class="testimonial-text">"${t.review}"</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">${t.patientName.slice(0,2).toUpperCase()}</div>
-            <div class="author-info"><h4>${t.patientName}</h4><p>${t.service || 'Patient'}</p></div>
-          </div>
-        </div>
-      `).join('');
-    }
-  } catch (e) { /* Keep default testimonials if API fails */ }
-}
-loadTestimonials();
-
-// ─── RAZORPAY PAYMENT ─────────────────────────────────────────────
-async function payOnline() {
-  const name  = prompt('Aapka naam:');
-  const email = prompt('Aapka email:');
-  const phone = prompt('Aapka phone number:');
-  if (!name || !email) { alert('Name and email are required.'); return; }
-
-  try {
-    const res = await fetch(`${API}/api/payments/create-order`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ amount: 500, patientName: name, email, phone, description: 'Physiotherapy Session' })
-    });
-    const data = await res.json();
-
-    if (!data.success) { alert('Payment order could not be created. Please try again.'); return; }
-
-    const options = {
-      key:      data.keyId,
-      amount:   data.amount,
-      currency: data.currency,
-      name:     'Physicwell Rehab Center',
-      description: 'Physiotherapy Session',
-      order_id: data.orderId,
-      handler: async function(response) {
-        const verifyRes = await fetch(`${API}/api/payments/verify`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            razorpay_order_id:   response.razorpay_order_id,
-            razorpay_payment_id: response.razorpay_payment_id,
-            razorpay_signature:  response.razorpay_signature,
-            paymentId:           data.paymentId
-          })
-        });
-        const verifyData = await verifyRes.json();
-        if (verifyData.success) {
-          alert(`✅ Payment Successful!\nReceipt: ${verifyData.receiptNumber}\nReceipt has been sent to your email.`);
-        } else {
-          alert('❌ Payment verification failed. Please contact us.');
-        }
-      },
-      prefill: { name, email, contact: phone },
-      theme: { color: '#0a5c6b' }
-    };
-
-    if (typeof Razorpay === 'undefined') {
-      alert('Razorpay could not load. Please refresh the page.');
-      return;
-    }
-    const rzp = new Razorpay(options);
-    rzp.open();
-  } catch (err) {
-    alert('Payment mein error aaya. Please try again.');
-  }
-}
-
-// ─── SET MIN DATE ─────────────────────────────────────────────────
-const dateField = document.getElementById('patDate');
-if (dateField) {
-  dateField.min = new Date().toISOString().split('T')[0];
-}
 </script>
 </body>
 </html>
